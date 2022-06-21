@@ -15,7 +15,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Data
+@Getter
+@Setter
 @Entity
 @Table(name="user_table")
 public class UserJpa implements Serializable {
@@ -25,19 +31,24 @@ public class UserJpa implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ID_GENERATOR_USER")
 	private int id;
 	
+	// promenljiva za ime
 	@Column(name="first_name", length=30, nullable=false)
 	private String firstName;
 	
+	// promenljiva za prezime
 	@Column(name="second_name", length=30, nullable=false)
 	private String secondName;
 
+	// promenljiva za datum rodjenja
 	@Column(name="date", nullable=false)
 	//@Temporal()
 	private Date date;
 	
+	// promenljiva za email
 	@Column(name="email", length=30, nullable=false)
 	private String email;
 	
+	// promenljiva za password za logovanje
 	@Column(name="password", length=50, nullable=false)
 	private String password;
 	
@@ -53,91 +64,4 @@ public class UserJpa implements Serializable {
 	@OneToMany(mappedBy="id", cascade = {CascadeType.ALL})
 	private List<LikeJpa> like;
 	
-	public UserJpa() {
-		
-	}
-	
-	public UserJpa(String firstName, String secondName, Date date, String email, String password) {
-		super();
-		this.firstName = firstName;
-		this.secondName = secondName;
-		this.date = date;
-		this.email = email;
-		this.password = password;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getSecondName() {
-		return secondName;
-	}
-
-	public void setSecondName(String secondName) {
-		this.secondName = secondName;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public List<PostJpa> getPost() {
-		return post;
-	}
-
-	public void setPost(List<PostJpa> post) {
-		this.post = post;
-	}
-
-	public List<CommentJpa> getCommentJpa() {
-		return commentJpa;
-	}
-
-	public void setCommentJpa(List<CommentJpa> commentJpa) {
-		this.commentJpa = commentJpa;
-	}
-
-	public List<LikeJpa> getLike() {
-		return like;
-	}
-
-	public void setLike(List<LikeJpa> like) {
-		this.like = like;
-	}
-
-	
-
 }

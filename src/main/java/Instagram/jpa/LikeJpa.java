@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+@Data
 @Entity
 @Table(name="like_table")
 public class LikeJpa implements Serializable {
@@ -22,40 +26,21 @@ public class LikeJpa implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ID_GENERATOR_LIKE")
 	private int id;
 	
-	@Column(name="check")
+	// promenljiva za cekiranje lajkova, odnosno a li je lajkovano ili ne
+	@Column(name="like_check")
 	private boolean check;
 
-	
+	//Jedan user moze lajkovati vise stvari
 	@ManyToOne
-	@JoinColumn(name="id")
+	//@JoinColumn(name="user_id")  //mapiranje bi trebal da bude po mail-u
+	@JoinColumn(name="user_email")
 	private UserJpa userJpa;
-	public LikeJpa() {
-		
-	}
-
-	public boolean isCheck() {
-		return check;
-	}
-
-	public void setCheck(boolean check) {
-		this.check = check;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public UserJpa getUserJpa() {
-		return userJpa;
-	}
-
-	public void setUserJpa(UserJpa userJpa) {
-		this.userJpa = userJpa;
-	}
 	
+	// Jedan post moze imati vise lajkova
+	@ManyToOne
+	@JoinColumn(name="post_id")
+	private LikeJpa likeJpa;
+	
+
 	
 }

@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import Instagram.dto.UserDto;
 import Instagram.jpa.LikeJpa;
 import Instagram.jpa.UserJpa;
 

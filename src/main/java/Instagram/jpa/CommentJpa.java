@@ -16,6 +16,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+@Data
+@Getter
+@Setter
 @Entity
 @Table(name="comment_table")
 public class CommentJpa implements Serializable {
@@ -25,7 +31,7 @@ public class CommentJpa implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ID_GENERATOR_COMMENT")
 	private int id;
 	
-	//Sadrzaj komentara
+	//Sadrzaj komentaras
 	@Column(name="content", length=200, nullable=false)
 	private String content;
 	
@@ -36,59 +42,14 @@ public class CommentJpa implements Serializable {
 	
 	// jedan post sadrzi vise komentara
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="post_id")
 	private PostJpa postJpa;
 	
 	//jedan user moze pisati vise komentara
 	@ManyToOne
-	@JoinColumn(name="id")
+	//@JoinColumn(name="user_id")  //mapiranje bi trebal da bude po mail-u
+	@JoinColumn(name="user_email")
 	private UserJpa userJpa;
-	
-	public CommentJpa() {
-		
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public int getKey() {
-		return key;
-	}
-
-	public void setKey(int key) {
-		this.key = key;
-	}
-
-	public PostJpa getPostJpa() {
-		return postJpa;
-	}
-
-	public void setPostJpa(PostJpa postJpa) {
-		this.postJpa = postJpa;
-	}
-
-	public UserJpa getUserJpa() {
-		return userJpa;
-	}
-
-	public void setUserJpa(UserJpa userJpa) {
-		this.userJpa = userJpa;
-	}
-	
-	
 	
 	
 }

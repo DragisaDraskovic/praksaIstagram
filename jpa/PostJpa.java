@@ -26,7 +26,7 @@ public class PostJpa implements Serializable {
 
 	@Id
 	@SequenceGenerator(name="ID_GENERATOR_POST",allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ID_GENERATOR_POST")
+	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="ID_GENERATOR_POST")
 	private int id;
 	
 	// promenljiva za sadrzaj

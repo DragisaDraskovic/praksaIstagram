@@ -32,6 +32,16 @@ public class TestRestController {
 	TestRepository testRepository;
 	*/
 	
+	@GetMapping("/home")
+	public String admin() {
+		return "ti si admin";
+	}
+	
+	@GetMapping("/user")
+	public String user() {
+		return "ti si user";
+	}
+	
 	@PostMapping("/test")
 	public ResponseEntity<HttpStatus> addTest(@RequestBody TestJpa testJpa) {
 		testServices.save(testJpa);

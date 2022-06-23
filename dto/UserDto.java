@@ -10,6 +10,7 @@ public class UserDto {
 	private String secondName;
 	//private Date date;
 	private String email;
+	private String password;
 	
 	//da li trebaju i ostale promenjljive koje nisu u izvornom delu klase
 }

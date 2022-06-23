@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import Instagram.dto.UserConverter;
+import Instagram.converter.UserConverter;
 import Instagram.dto.UserDto;
 import Instagram.jpa.UserJpa;
 import Instagram.service.UserService;
@@ -42,33 +42,36 @@ public class UserRestController {
 		return userService.getUserDto();
 	}
 	*/
+	
 	@GetMapping("/usersDto")
 	public List<UserDto> getAllUsersDto() {
 		List<UserJpa> findAll = userService.findAll();
-		return userConverter.convertEntityToDto(findAll);
+		return userConverter.getUserDto();
 	}
 	
-	/*
+	
 	@GetMapping("/user/{id}")
 	public UserJpa getOne(@PathVariable("id") Integer id) {
 		return userService.getOneUser(id);
 	}
-	*/
 	
-	@GetMapping("/user/{id}")
+	
+	/* nema logike posto i DTO nema ID
+	@GetMapping("/userDto/{id}")
 	public UserDto findById(@PathVariable("id") Integer id) {
 		UserJpa user = userService.getOneUser(id);
-		return userConverter.convertEntityToDto(user);
+		return userConverter.convertEntityToDto(id);
 	}
-
+	*/
 	
-	/*
+	
+	
 	@PostMapping("/userPost")
 	public ResponseEntity<HttpStatus> addUser(@RequestBody UserJpa userJpa) {
 		userService.save(userJpa);
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
-	*/
+	
 	/*
 	@PostMapping("/userPost")
 	public UserDto save(@RequestBody UserDto dto) {

@@ -34,7 +34,7 @@ public class UserJpa implements Serializable {
 	@Id
 	@Column(name="id")
 	@SequenceGenerator(name="ID_GENERATOR_USER",allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ID_GENERATOR_USER")
+	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="ID_GENERATOR_USER")
 	private int id;
 	
 	// promenljiva za ime
@@ -61,14 +61,15 @@ public class UserJpa implements Serializable {
 	private String password;
 	
 	//Role trebace za admina i usera
+/*
 	@ManyToMany
 	@JoinTable(
-			name = "role",
+			name = "users_roles",
 			joinColumns = @JoinColumn(name = "users_id"),
 			inverseJoinColumns = @JoinColumn(name="roles_id")
 			)
 	private Set<Role> roles = new HashSet<>(); //Set ne sadrzi duple vrednosti pa je dobraz za role
-
+*/
 	private String role;
 	
 	//jedan user ima vise postova
@@ -85,4 +86,10 @@ public class UserJpa implements Serializable {
 	//@OneToMany(mappedBy="id")
 	private List<LikeJpa> like;
 	
+	/*
+	//dodavanje uloga
+	public void addRole(Set<Role> role) {
+		this.roles.addAll(role);
+	}
+	*/
 }

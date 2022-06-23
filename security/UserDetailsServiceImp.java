@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import Instagram.jpa.UserJpa;
 import Instagram.repository.UserRepository;
 import Instagram.service.UserService;
+import lombok.Data;
 
 public class UserDetailsServiceImp implements UserDetailsService {
 
@@ -16,7 +17,16 @@ public class UserDetailsServiceImp implements UserDetailsService {
 	
 	@Autowired
 	UserService userService;
+
+	UserJpa userJpa;
 	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	//	return new userJpa;
+		return null;
+	}
+	
+	/*
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//UserJpa userJpa = userRepository.findUserByUserName(username);
@@ -26,5 +36,24 @@ public class UserDetailsServiceImp implements UserDetailsService {
 		}
 		return new MyUserDetails(userJpa);
 	}
+	*/
+	
+	/*
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		UserJpa userJpa = userRepository.findByUsername(username);
+		MyUserDetails userDetails = null;
+		if(userJpa !=null) {
+			//generaisati JWT
+			userDetails = new MyUserDetails();
+			userDetails.setUser(userJpa);
+		} else {
+			throw new UsernameNotFoundException("user not exists whit the name" + username);
+		}
+		
+		return userDetails;
+	}
+	*/
+	
 
 }

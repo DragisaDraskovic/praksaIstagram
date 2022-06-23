@@ -11,10 +11,7 @@ import Instagram.jpa.LikeJpa;
 import Instagram.jpa.UserJpa;
 
 public interface UserRepository extends JpaRepository<UserJpa,Integer> {
-	//NECEEEEEEEEE!!!
-	//@Query("SELECT u FROM user_table u WHERE u.username = :username")
-	//public UserJpa getUserByUserName(@Param("username") String username);
-	//////////////////////////////////
+	
 	//UserJpa findUserByUserName(String username);
 	UserJpa findByUsername(String username);
 	//Collection<UserJpa> findByNameContainingIgnoreCase(String name);

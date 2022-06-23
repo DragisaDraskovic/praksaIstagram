@@ -4,10 +4,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Instagram.dto.UserDto;
+import Instagram.jpa.User;
 import Instagram.jpa.UserJpa;
 import Instagram.repository.UserRepository;
 
@@ -26,9 +29,11 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
+	/*
 	public void save(UserJpa userJpa) {
 		userRepository.save(userJpa);
 	}
+	*/
 	
 	/*
 	public void save(UserDto userDto) {
@@ -54,6 +59,15 @@ public class UserService {
 	public Collection<UserJpa> getAllUser() {
 		return userRepository.findAll();
 	}
+	
+	/*
+	@Transactional(rollbackFor = Exception.class) 
+	public String saveDto(UserDto userDto) { 
+	    userDto.setPassword(bCryptPasswordEncoder
+	           .encode(userDto.getPassword())); 
+	    return save(new User(userDto)).getId(); 
+	}
+	*/
 	
 	
 }

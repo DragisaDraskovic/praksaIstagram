@@ -23,7 +23,7 @@ public class LikeJpa implements Serializable {
 	
 	@Id
 	@SequenceGenerator(name="ID_GENERATOR_LIKE",allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ID_GENERATOR_LIKE")
+	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="ID_GENERATOR_LIKE")
 	private int id;
 	
 	// promenljiva za cekiranje lajkova, odnosno a li je lajkovano ili ne

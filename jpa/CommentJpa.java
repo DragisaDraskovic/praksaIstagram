@@ -28,7 +28,7 @@ public class CommentJpa implements Serializable {
 
 	@Id
 	@SequenceGenerator(name="ID_GENERATOR_COMMENT",allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ID_GENERATOR_COMMENT")
+	@GeneratedValue(strategy=GenerationType.IDENTITY, generator="ID_GENERATOR_COMMENT")
 	private int id;
 	
 	//Sadrzaj komentaras

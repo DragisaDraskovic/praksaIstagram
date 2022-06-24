@@ -20,13 +20,14 @@ public class UserDetailsServiceImp implements UserDetailsService {
 
 	UserJpa userJpa;
 	
+	/*
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 	//	return new userJpa;
 		return null;
 	}
+	*/
 	
-	/*
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//UserJpa userJpa = userRepository.findUserByUserName(username);
@@ -36,7 +37,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
 		}
 		return new MyUserDetails(userJpa);
 	}
-	*/
+	
 	
 	/*
 	@Override

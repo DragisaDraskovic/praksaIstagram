@@ -51,5 +51,8 @@ public class CommentJpa implements Serializable {
 	@JoinColumn(name="user_email")
 	private UserJpa userJpa;
 	
+	//@ManyToOne(optional=false)
+	//@JoinColumn(name="id",referencedColumnName = "id")
+	//private CommentJpa parentComment;
 	
 }

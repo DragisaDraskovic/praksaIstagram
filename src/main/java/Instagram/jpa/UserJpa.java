@@ -1,6 +1,8 @@
 package Instagram.jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +21,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 import lombok.Data;
 import lombok.Getter;
@@ -85,6 +90,9 @@ public class UserJpa implements Serializable {
 	@OneToMany(mappedBy="id", cascade = {CascadeType.ALL})
 	//@OneToMany(mappedBy="id")
 	private List<LikeJpa> like;
+	
+	 @ManyToMany(fetch = FetchType.EAGER)
+	    private Collection<Role> roles = new ArrayList<>();
 	
 	/*
 	//dodavanje uloga

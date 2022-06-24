@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,7 @@ public class UserRestController {
 	@Autowired
 	UserConverter userConverter;
 	
-	
+
 	@GetMapping("/users")
 	public Collection<UserJpa> getAllUsers() {
 		return userService.getAllUser();
@@ -65,13 +66,13 @@ public class UserRestController {
 	*/
 	
 	
-	
+	/*
 	@PostMapping("/userPost")
 	public ResponseEntity<HttpStatus> addUser(@RequestBody UserJpa userJpa) {
 		userService.save(userJpa);
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
-	
+	*/
 	/*
 	@PostMapping("/userPost")
 	public UserDto save(@RequestBody UserDto dto) {
